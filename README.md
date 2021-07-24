@@ -13,19 +13,41 @@ Please cite this application as:
 
 ## Installation
 
-KidStats requires R version **3.2.1** or higher. 
+To access KidStats offline, copy ("clone") this repository using one of the following two methods:
+1. Access the repository through a terminal system by typing the following code:
 
-``` r
-install.packages("devtools")  # install package if not already in library
-
-devtools::install_github("ElaineYChu/kidstats")
+``` console
+cd "file/path/to/desired/repository/location"
+git clone https://github.com/ElaineYChu/kidstats
 ```
+
+2. Download the repository as a zipped file by clicking the green "CODE" button on the top-right side and select 'Download ZIP'
 
 ## Usage
 
-To use KidStats in RStudio, type the following in your R console:
+Once the repository is cloned onto your local machine, open up RStudio. KidStats requires R version **3.2.1** or higher and will require the following packages in your local R system:
+* shiny
+* shinydashboard
+* shinyjs
+* tidyverse
+* rmarkdown
+* stringr
+* yada
+
+If you do not have one/some/all of the above packages in your local system, please set your working directory to the cloned repository and run the following code in your R console:
+
+```r
+setwd("file/path/to/desired/repository/location/kidstats")  # set working directory to kidstats or kidstats-main, depending on your folder name
+source("setup.R")  # install required packages
+```
+
+After setting your working directory and ensuring all packages are installed, run the following code to access KidStats:
 
 ``` r
-library(kidstats)
-kidstats()
+runApp()  # run KidStats
+
 ```
+
+
+
+

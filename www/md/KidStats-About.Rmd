@@ -1,0 +1,163 @@
+---
+title: "KidStats-V2-About"
+author: "Kyra E. Stull"
+date: "7/21/2021"
+output: html_document
+---
+
+# Overview
+
+KidStats communicates with R (R Core Team, 2021) to employ a mixed cumulative probit algorithm using long bone measurements, dental development, and/or epiphsyeal fusion to produce subadult age estimations. KidStats was funded by the National Institute of Justice (NIJ Award 2015-DN-BX-K409 and NIJ Award 2017-DN-BX-0144) and the National Science Foundation (BCS-1551913). 
+
+If there is data available that is either comparable to the descriptions in the Measurements section, or collected using `KSCollect`, please contact Kyra Stull to discuss incorporating the samples into the application.
+
+Kyra E. Stull, PhD 
+Assistant Professor 
+Department of Anthropology 
+University of Nevada, Reno 
+kstull@unr.edu 
+
+KidStats is a a Shiny app. The latest release is hosted at:
+https://kyra-stull.shinyapps.io/kidstats/
+
+
+
+Citing KidStats:
+<!-- Kyra Stull (2019). kidstats: Age Estimation. R package version 0.1.1.9002. https://github.com/geanes/kidstats -->
+Kyra Stull (2021). kidstats: Age Estimation. R package version 0.2.0. DOI: TBD
+
+
+## Model Optionss
+The current version of KidStats only provides models using a US reference sample. Future models will be optimized to offer the user the option to choose the appropriate _**1) reference sample and 2) sample demographics.**_
+<!-- The user has numerous options to build the most appropriate model. The three important options are: _**1) the reference sample, 2) the sample demographics, and 3) the prior**_. -->
+
+### The References
+
+There is currently one reference sample from which subadult age estimation models were built; in the future, the use can use any single group or combination of the reference samples. There will also be a `Global` option that uses models optimized from pooling all samples together, continaing the greatest population and economic variation. This option should be used if the user is not confident in choosing an appropriate reference sample. The reference samples include: United States.
+
+<!-- There are 5 different samples available to build models; the user can use any single group or any combination of the reference samples. There is also a `Global` option that pools all samples together, which contains the greatest population and economic variation and what should be used if the user is not confident in choosing an appropriate reference sample. The reference samples include: United States, South Africa, Colombia, Netherlands, and France. -->
+
+<!-- The **United States** sample comes from the University of New Mexico Health Sciences Center, Office of the Medical Investigator and the Office of the Chief Medical Examiner, State of Maryland. The samples are comprised of deceased individuals between the ages of birth and 20 years. For both locations, data was collected from high-resolution full-body computed tomography scans. -->
+
+<!-- The **South African** sample (n = 1310) includes subadults between the ages of birth and 12 years and include individuals from the three largest South African social races. Besides a few smaller sample sizes at the two youngest age categories and the oldest age category, there is a largely even age distribution for the sample. The data was collected from Lodox Statscan radiographic images from the Red Cross War Memorial Children's Hospitals as part of their triage protocol (*i.e.*, living children). For more information regarding the sample demographics and size please see Stull (2013).  -->
+
+<!-- The **French** sample is from the Radiology Department of the Public Hospital Services of Marseille (France). The data is from clinical CT scans. -->
+
+<!-- The **Colombian** sample is from the Department of Anthropology, University of Antioquia, Laboratory of Anthropology and Osteology (Colombia). Unlike the other samples, the Colombian material is composed of the cemetery remains and the skeletal and dental data was collected from individuals aged 0 to 15 years, all of whom were born in the 21st century. -->
+
+<!-- The **Netherlands** sample is from the Department of Radiology at the Emma Children’s Hospital – Academic Medical Center Amsterdam. The data is collected from clinical CT images of individuals aged 0 to 15 years. -->
+
+### The Demographics
+
+<!-- The user has the opportunity to build sex-specific or pooled sex models.  -->
+The user will have the opportunity to estimate subadult age using sex-specific or pooled sex models. A pooled sex model is recommended, unless there is some reason you are confident of the sex (*i.e.*, flesh was still present on the remains, living age estimation).
+
+### Prior 
+
+A prior distribution of a parameter is the probability distribution that represents the uncertainty before the current data are evaluated. Currently, the system is operating on a uniform/noninformative prior, which is a prior distribution that assigns equal likelihood on all possible values of the parameter (between birth and 20 years). Because there is equal likelihood across all possible values, we consider this the most conservative prior.
+
+*KidStats* can be used in a clinical setting, a natural or mass disaster, or a forensic setting, which means an informative prior is necessary but different for each instance. In some instances that information to build the appropriate prior needs to be gathered and organized prior to employing in the algorithm; this is an on-going portion of the project. 
+
+
+## Measurements
+
+Eighteen measurements were collected from the six long bones. Length and breadth measurement definitions were modified from fetal osteology or from adult postcranial standard measurements (Fazekas and Kósa, 1978; Moore-Jansen et al., 1994). 
+
+Written definitions are provided below. Pay attention to the ‘Comment’ as this usually provides some insight to landmark location placement. Unlike cranial landmarks, none of the measurements are Type I. If measurements are being collected from radiographic images, ensure it is an imaging technique that does not generate significant levels of distortion and the bone is in anatomical position.
+
+Each reference group has a different combination of long bones provided to the sample depending on their imaging modality and the purpose of the image.
+
+**Humerus diaphyseal length (HDL)**
+The maximum distance between the most proximal edge of the diaphysis to the most distal edge of the diaphysis (modified from Fazekas and Kósa, 1978). 
+Comment: The most distal portion is generally the medial portion. 
+
+
+**Humerus proximal breadth (HPB)**
+The distance between the most medial and lateral edges of the proximal diaphysis, perpendicular to the long axis of the bone, when the element is in anatomical position. 
+Comment: This is not a maximum breadth. 
+
+
+**Humerus distal breadth (HDB)**
+The distance between the most medial and lateral points on the distal diaphysis, perpendicular to the long axis of the bone, when the element is in anatomical position (Fazekas and Kósa, 1978). 
+
+
+**Humerus midshaft breadth (HMSB)**
+The distance between the most medial and lateral edges at midshaft, perpendicular to the long axis of the bone, when the bone is in anatomical position (Fazekas and Kósa, 1978). 
+Comment: Determine midshaft when obtaining diaphyseal length. Note, this is not a minimum or maximum. 
+
+
+**Ulna diaphyseal length (UDL)**
+The maximum distance between the most proximal edge of the diaphysis to the most distal edge of the diaphysis (Fazekas and Kósa, 1978). 
+
+
+**Ulna midshaft breadth (UMSB)**
+The distance between the most medial and lateral edges at midshaft, perpendicular to the long axis of the bone, when the bone is in anatomical position (Fazekas and Kósa, 1978). 
+Comment: Determine midshaft when obtaining diaphyseal length. Note, this is not a minimum or maximum. 
+
+
+**Radius diaphyseal length (RDL)**
+The maximum distance between the most proximal edge of the diaphysis to the most distal edge of the diaphysis (Fazekas and Kósa, 1978). 
+
+
+**Radius proximal breadth (RPB)**
+The distance between the most medial and lateral edges of the proximal diaphysis, perpendicular to the long axis of the bone, when the bone is in anatomical position (modified from Urcid, 1992). 
+
+
+**Radius distal breadth (RDB)**
+The distance between the most medial and lateral edges of the distal diaphysis, perpendicular to the long axis of the bone, when the bone is in anatomical position. 
+Comment: The measurement is obtained from the anterior projections on the distal diaphysis. 
+
+
+**Radius midshaft breadth (RMSB)**
+The distance between the most medial and lateral edges at midshaft, perpendicular to the long axis of the bone, when the bone is in anatomical position (modified from Fazekas and Kósa, 1978). 
+Comment: Determine midshaft when obtaining diaphyseal length. Note, this is not a minimum or maximum. 
+
+
+**Femur diaphyseal length (FDL)**
+The maximum distance between the most proximal edge of the diaphysis to the most distal edge of the diaphysis (Fazekas and Kósa, 1978). Comment: The most distal point is generally the medial projection on the metaphysis. The expression is slight in infants but becomes more pronounced as age increases. 
+
+
+**Femur distal breadth (FDB)**
+The distance between the most medial and lateral edges of the distal diaphysis, perpendicular to the long axis of the bone, when the bone is in anatomical position (modified from Fazekas and Kósa, 1978). 
+
+
+**Femur midshaft breadth (FMSB)**
+The distance between the most medial and lateral edges at midshaft, perpendicular to the long axis of the bone, when the bone is in anatomical position (Fazekas and Kósa, 1978). 
+Comment: Determine midshaft when obtaining diaphyseal length. Note, this is not a minimum or maximum. 
+
+
+**Tibia diaphyseal length (TDL)**
+The maximum distance between the most proximal edge of the diaphysis to the most distal edge of the diaphysis (Fazekas and Kósa, 1978). Comment: Generally, the most proximal point is medial and the most distal point is lateral. 
+
+
+**Tibia proximal breadth (TPB)**
+The distance between the most medial and lateral edges of the proximal diaphysis, perpendicular to the long axis of the bone, when the bone is in anatomical position (modified from Moore-Jansen et al., 1994). 
+
+
+**Tibia distal breadth (TDB)**
+The distance between the most medial and lateral edges of the distal diaphysis, perpendicular to the long axis of the bone in anatomical position (modified from Moore-Jansen et al., 1994). 
+Comment: The lateral edge is the anterior projection of the fibular notch. 
+
+
+**Tibia midshaft breadth (TMSB)**
+The distance between the most medial and lateral edges at midshaft, perpendicular to the long axis of the bone, when the bone is in anatomical position (Fazekas and Kósa, 1978). 
+Comment: Determine midshaft when obtaining diaphyseal length. 
+
+
+**Fibula diaphyseal length (FBDL)**
+The maximum distance between the most proximal edge of the diaphysis to the most distal edge of the diaphysiss (Fazekas and Kósa, 1978). 
+
+## Dental Development
+Calcification stages of all permanent teeth are scored using the stages of Moorrees et al. (1963) modified by AlQahtani et al. (2010). Each stage corresponds to a number, from 1 to 13, for both mono- and pluri-radicular teeth. 
+
+## Epiphyseal Fusion Scoring
+Epiphyseal fusion is scored for the epiphyses of the long bones of the arms and legs, the fusion of the ischium to the ilium and the pubis, the fusion to the ilium to the pubis, as well as the appearance of the calcaneal tuberosity, the patella, the carpals and tarsals. 
+
+The long bone epiphyses are scored on a 5-stage system: 0) the epiphysis has not ossified (or appeared) (absent); 1) the epiphysis has appeared but is characterized by the lack of any bony attachments (present); 2) requires metaphyseal trabeculae to cross the epiphyseal growth plate to initiate bone fusion with the epiphysis (with bony bridging less than half the length of the epiphyseal growth plate evident). This stage is referred to as “active union” and usually begins in the central region of the growth plate; 3) (“advanced union”) is characterized by bony bridging greater than half the length of the growth plate, with radiolucent gaps retained throughout; and 4) complete fusion, as demonstrated by homogenous radiodensity. 
+
+
+## Acknowledgements
+
+The software programmer, Glenn Eanes, and the and statistician, Michael Price, helped  bring this concept to life. A huge thank you to all of our collaborators and contributors. Ultimately, none of this would have been possible without the funding provided by the National Institute of Justice and the National Science Foundation. 
+
+

@@ -27,8 +27,8 @@ Citing KidStats:
 Kyra Stull (2021). kidstats: Age Estimation. R package version 0.2.0. DOI: TBD
 
 
-## Model Optionss
-The current version of KidStats only provides models using a US reference sample. Future models will be optimized to offer the user the option to choose the appropriate _**1) reference sample and 2) sample demographics.**_
+## Model Options
+The current version of KidStats only provides models using a pooled-sex US reference sample. Future models will be optimized to offer the user the option to choose the appropriate _**1) reference sample and 2) sample demographics.**_
 <!-- The user has numerous options to build the most appropriate model. The three important options are: _**1) the reference sample, 2) the sample demographics, and 3) the prior**_. -->
 
 ### The References

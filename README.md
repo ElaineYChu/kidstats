@@ -32,6 +32,7 @@ Once the repository is cloned onto your local machine, open up RStudio. KidStats
 * tidyverse
 * rmarkdown
 * stringr
+* doParallel
 * yada
 
 If you do not have one/some/all of the above packages in your local system, please set your working directory to the cloned repository and run the following code in your R console:

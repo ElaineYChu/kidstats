@@ -11,6 +11,7 @@ install.packages("shinyjs")
 install.packages("tidyverse")
 install.packages("rmarkdown")
 install.packages("stringr")
+install.packages("doParallel")
 install.packages("devtools")
 
 devtools::install_github("MichaelHoltonPrice/yada")

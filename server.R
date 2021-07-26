@@ -8,7 +8,7 @@ library(rmarkdown, quietly = TRUE)
 library(yada, quietly = TRUE)
 library(stringr, quietly = TRUE)
 library(doParallel, quietly = TRUE)
-library(future, quietly = TRUE)
+#library(future, quietly = TRUE)
 
 source("R/helpers.R")
 source("R/model.R")

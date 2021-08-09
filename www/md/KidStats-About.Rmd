@@ -1,7 +1,7 @@
 ---
 title: "KidStats-V2-About"
 author: "Kyra E. Stull"
-date: "7/21/2021"
+date: "8/9/2021"
 output: html_document
 ---
 
@@ -21,44 +21,26 @@ KidStats is a a Shiny app. The latest release is hosted at:
 https://kyra-stull.shinyapps.io/kidstats/
 
 
-
 Citing KidStats:
-<!-- Kyra Stull (2019). kidstats: Age Estimation. R package version 0.1.1.9002. https://github.com/geanes/kidstats -->
-Kyra Stull (2021). kidstats: Age Estimation. R package version 0.2.0. DOI: TBD
+Kyra Stull (2021). kidstats: A web app to employ statistical analyses for subadults. R package version 0.2.0. DOI: TBD
 
 
 ## Model Options
 The current version of KidStats only provides models using a pooled-sex US reference sample. Future models will be optimized to offer the user the option to choose the appropriate _**1) reference sample and 2) sample demographics.**_
-<!-- The user has numerous options to build the most appropriate model. The three important options are: _**1) the reference sample, 2) the sample demographics, and 3) the prior**_. -->
+
 
 ### The References
 
 There is currently one reference sample from which subadult age estimation models were built; in the future, the use can use any single group or combination of the reference samples. There will also be a `Global` option that uses models optimized from pooling all samples together, containing the greatest population and economic variation. This option should be used if the user is not confident in choosing an appropriate reference sample. The reference sample includes: United States.
 
-<!-- There are 5 different samples available to build models; the user can use any single group or any combination of the reference samples. There is also a `Global` option that pools all samples together, which contains the greatest population and economic variation and what should be used if the user is not confident in choosing an appropriate reference sample. The reference samples include: United States, South Africa, Colombia, Netherlands, and France. -->
-
-<!-- The **United States** sample comes from the University of New Mexico Health Sciences Center, Office of the Medical Investigator and the Office of the Chief Medical Examiner, State of Maryland. The samples are comprised of deceased individuals between the ages of birth and 20 years. For both locations, data was collected from high-resolution full-body computed tomography scans. -->
-
-<!-- The **South African** sample (n = 1310) includes subadults between the ages of birth and 12 years and include individuals from the three largest South African social races. Besides a few smaller sample sizes at the two youngest age categories and the oldest age category, there is a largely even age distribution for the sample. The data was collected from Lodox Statscan radiographic images from the Red Cross War Memorial Children's Hospitals as part of their triage protocol (*i.e.*, living children). For more information regarding the sample demographics and size please see Stull (2013).  -->
-
-<!-- The **French** sample is from the Radiology Department of the Public Hospital Services of Marseille (France). The data is from clinical CT scans. -->
-
-<!-- The **Colombian** sample is from the Department of Anthropology, University of Antioquia, Laboratory of Anthropology and Osteology (Colombia). Unlike the other samples, the Colombian material is composed of the cemetery remains and the skeletal and dental data was collected from individuals aged 0 to 15 years, all of whom were born in the 21st century. -->
-
-<!-- The **Netherlands** sample is from the Department of Radiology at the Emma Children’s Hospital – Academic Medical Center Amsterdam. The data is collected from clinical CT images of individuals aged 0 to 15 years. -->
 
 ### The Demographics
-
-<!-- The user has the opportunity to build sex-specific or pooled sex models.  -->
-The user will have the opportunity to estimate subadult age using sex-specific or pooled sex models. A pooled sex model is recommended, unless there is some reason you are confident of the sex (*i.e.*, flesh was still present on the remains, living age estimation).
 
 The user also has the option to add "Known Age" to help validate KidStats age estimates. If a "Known Age" is input, the resulting plot in the output tab will plot the known age against the posterior density distribution for age calculated from the mixed cumulative probit. 
 
 ### Prior
 
-A prior distribution of a parameter is the probability distribution that represents the uncertainty before the current data are evaluated. Currently, the system is operating on a uniform/noninformative prior, which is a prior distribution that assigns equal likelihood on all possible values of the parameter (between birth and 20 years). Because there is equal likelihood across all possible values, we consider this the most conservative prior.
-
-*KidStats* can be used in a clinical setting, a natural or mass disaster, or a forensic setting, which means an informative prior is necessary but different for each instance. In some instances that information to build the appropriate prior needs to be gathered and organized prior to employing in the algorithm; this is an on-going portion of the project. 
+A prior distribution of a parameter is the probability distribution that represents the uncertainty before the current data are evaluated. Currently, the system is operating on an offset mixture of Weibull distributions. 
 
 
 ## Measurements

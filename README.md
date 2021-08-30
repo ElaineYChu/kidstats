@@ -9,7 +9,7 @@ Alternatively, KidStats works best with RStudio (https://www.rstudio.com), which
 This application is one product of the research of Kyra Stull, PhD (http://www.kyrastull.weebly.com), an Assistant Professor in the Department of Anthropology at the University of Nevada, Reno. Associated citations / articles are linked at the bottom of this document. 
 
 Please cite this application as: 
-> K.E. Stull (2021). kidstats: Age Estimation. R package version 0.2.0. DOI: *TBD*
+> K.E. Stull (2021). kidstats: Age Estimation. R package version 0.2.0. DOI: 10.5281/zenodo.5250072	
 
 ## Installation
 

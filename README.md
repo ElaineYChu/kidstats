@@ -2,7 +2,7 @@
 
 KidStats is a Shiny application to make subadult age estimations based on dental and skeletal development and skeletal diaphyseal metrics using mixed cumulative probit models.
 
-The Shiny application is best accessed directly with an internet connection here: https://kyra-stull.shinyapps.io/kidstats/. 
+The Shiny application is best accessed directly with an internet connection here: https://bit.ly/KidStats. 
 
 Alternatively, KidStats works best with RStudio (https://www.rstudio.com), which works well with the `shiny` package and function *pandoc*. 
 

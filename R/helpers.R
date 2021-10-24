@@ -123,7 +123,7 @@ collapse_sides <- function(data, var_info) {
 reorder_df <- function(case_data, var_names){
   new_df <- data.frame(matrix(NA, 1, length(var_names)))
   names(new_df) <- var_names
-  
+   
   for(i in var_names) {
     cur_var <- grep(i, names(case_data), value=TRUE)
     new_df[i] <- ifelse(length(cur_var)==0, NA, case_data[[cur_var]])

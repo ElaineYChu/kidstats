@@ -14,7 +14,7 @@ install.packages("stringr")
 install.packages("doParallel")
 install.packages("devtools")
 
-devtools::install_github("MichaelHoltonPrice/yada")
+devtools::install_github("MichaelHoltonPrice/yada",ref="dev")
 
 
 

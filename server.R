@@ -82,9 +82,10 @@ shinyServer(function(input, output, session){
       "HC_Oss_L" = as.numeric(input$HC_Oss_L), "HC_Oss_R" = as.numeric(input$HC_Oss_R),
       "HT_Oss_L" = as.numeric(input$HT_Oss_L), "HT_Oss_R" = as.numeric(input$HT_Oss_R),
       "HLE_Oss_L" = as.numeric(input$HLE_Oss_L), "HLE_Oss_R" = as.numeric(input$HLE_Oss_R),
+      "HDE_EF_L" = as.numeric(input$HDE_EF_L), "HDE_EF_R" = as.numeric(input$HDE_EF_R),
       "HME_EF_L" = as.numeric(input$HME_EF_L), "HME_EF_R" = as.numeric(input$HME_EF_R),
-      "HCE1_EF_L" = as.numeric(input$HCE1_EF_L), "HCE1_EF_R" = as.numeric(input$HCE1_EF_R),
-      "HCE2_EF_L" = as.numeric(input$HCE2_EF_L), "HCE2_EF_R" = as.numeric(input$HCE2_EF_R),
+      # "HCE1_EF_L" = as.numeric(input$HCE1_EF_L), "HCE1_EF_R" = as.numeric(input$HCE1_EF_R),
+      # "HCE2_EF_L" = as.numeric(input$HCE2_EF_L), "HCE2_EF_R" = as.numeric(input$HCE2_EF_R),
       "HDE_EF_L" = as.numeric(input$HDE_EF_L), "HDE_EF_R" = as.numeric(input$HDE_EF_R),
       "RPE_EF_L" = as.numeric(input$RPE_EF_L), "RPE_EF_R" = as.numeric(input$RPE_EF_R),
       "RDE_EF_L" = as.numeric(input$RDE_EF_L), "RDE_EF_R" = as.numeric(input$RDE_EF_R),
@@ -122,7 +123,7 @@ shinyServer(function(input, output, session){
       #result <- suppressWarnings(collapse_sides(result0, approach = "Prefer Left"))
       
       
-      #print(result) ## FOR DEBUG
+      # print(result) ## FOR DEBUG
       return(result)
     } else return(NA)
     
@@ -201,12 +202,19 @@ shinyServer(function(input, output, session){
     #print(length(ref_model)) # FOR DEBUG
 
     mod_spec <- ref_model$mod_spec
-    
-    if(length(ref_model) == 2) {
-      th_y <- ref_model$theta_y_vect
+    if(length(ref_model) == 3) {
+         th_y <- ref_model$multi_mcp$th_y
+         problem <- ref_model$problem
     } else {
-      th_y <- ref_model$multi_mcp$th_y
-      var_names <- ref_model$problem$var_names
+         th_y <- ref_model$th_y
+         problem <- choose_model(case_data, input$refsamp)
+    }
+   
+    # print(length(th_y))  # FOR DEBUG
+    # print(th_y)  # FOR DEBUG
+    
+    if(length(ref_model) != 2) {
+      var_names <- problem$var_names
       case_data <- reorder_df(case_data, var_names)
     }
     

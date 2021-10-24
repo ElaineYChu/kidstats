@@ -31,11 +31,11 @@ choose_model <- function(case_data, refsamp) { # sexsamp currently not available
   if(length(var_names) == 1) {
     file_name <- find_model_path(refsamp, var_names, "univariate")
   } else {  # this is where you add more multivariate options if available
-    # if(length(var_names) == 6) {
-      file_name <- find_model_path(refsamp, "six_var", "multivariate")
-    # } else {
-    #   file_name <- find_model_path(refsamp, "full_model", "multivariate")
-    # }
+    if(length(var_names) <= 6 & all(var_names %in% c('HME_EF','TC_Oss','max_M1','man_I2','FDL','RDL'))) {
+          file_name <- find_model_path(refsamp, "six_variable", "multivariate")
+    } else {
+          file_name <- find_model_path(refsamp, "sixone_variable", "multivariate")
+    }
   }
   
   model <- readRDS(file_name)
@@ -49,6 +49,15 @@ load_th_x <- function(refsamp) {
   th_x <- readRDS(file_path)
   
   return(th_x)
+}
+
+load_problem <- function(refsamp) {
+  folder_path <- file.path("models",refsamp)
+  file_name <- list.files(folder_path, pattern="problem_")
+  file_path <- file.path(folder_path, file_name)
+  problem <- readRDS(file_path)
+  
+  return(problem)
 }
 
 choose_var_info <- function(refsamp) {

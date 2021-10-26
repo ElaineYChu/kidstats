@@ -20,7 +20,7 @@ https://kyra-stull.shinyapps.io/kidstats/
 ----
 
 ## Results
-
+- Model trained on the following variables: **`r paste0(analysis()$var_names, collapse=", ")`**
 - Point Estimation: **`r round(analysis()$post$xmean, digits = 2)`**
 - Lower 95% Prediction Interval: **`r round(analysis()$post$xlo, digits = 2)`**
 - Upper 95% Prediction Interval: **`r round(analysis()$post$xhi, digits = 2)`**

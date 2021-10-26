@@ -3,12 +3,10 @@
 library(shiny, quietly = TRUE)
 library(shinydashboard, quietly = TRUE)
 library(dplyr, quietly = TRUE)
-# library(purrr, quietly = TRUE)
-library(rmarkdown, quietly = TRUE)
+require(rmarkdown, quietly = TRUE)
 library(yada, quietly = TRUE)
 library(stringr, quietly = TRUE)
 library(doParallel, quietly = TRUE)
-#library(future, quietly = TRUE)
 
 source("R/helpers.R")
 source("R/model.R")
@@ -82,7 +80,6 @@ shinyServer(function(input, output, session){
       "HC_Oss_L" = as.numeric(input$HC_Oss_L), "HC_Oss_R" = as.numeric(input$HC_Oss_R),
       "HT_Oss_L" = as.numeric(input$HT_Oss_L), "HT_Oss_R" = as.numeric(input$HT_Oss_R),
       "HLE_Oss_L" = as.numeric(input$HLE_Oss_L), "HLE_Oss_R" = as.numeric(input$HLE_Oss_R),
-      "HDE_EF_L" = as.numeric(input$HDE_EF_L), "HDE_EF_R" = as.numeric(input$HDE_EF_R),
       "HME_EF_L" = as.numeric(input$HME_EF_L), "HME_EF_R" = as.numeric(input$HME_EF_R),
       # "HCE1_EF_L" = as.numeric(input$HCE1_EF_L), "HCE1_EF_R" = as.numeric(input$HCE1_EF_R),
       # "HCE2_EF_L" = as.numeric(input$HCE2_EF_L), "HCE2_EF_R" = as.numeric(input$HCE2_EF_R),
@@ -189,38 +186,56 @@ shinyServer(function(input, output, session){
     shinyjs::hide("post_plot")
     updateTabItems(session, "tabs", selected = "outputTab")
     
-    ## Most of this code to run the model was provided by Michael ##
-    case_data <- case_data()
-    #print(case_data) # FOR DEBUG
+    ## Most of this code to run the model was provided by Michael & Elaine ##
+    case_vec <- case_data()  # convert reactive value to response vector
+    #print(case_vec) # FOR DEBUG
 
     #cl <- makeCluster(detectCores())
     #registerDoParallel(cl)
     
-    th_x <- load_th_x(input$refsamp)
+    th_x <- load_th_x(input$refsamp)  # load age prior
     
-    ref_model <- choose_model(case_data, input$refsamp)
+    ref_model <- choose_model(case_vec, input$refsamp)  # choose reference model
     #print(length(ref_model)) # FOR DEBUG
 
-    mod_spec <- ref_model$mod_spec
+    mod_spec <- ref_model$mod_spec  # initialize model specification
+    
+    # initialize parameter vector and problem
     if(length(ref_model) == 3) {
-         th_y <- ref_model$multi_mcp$th_y
+         th_y <- ref_model$multi_mcp$th_y 
          problem <- ref_model$problem
     } else {
          th_y <- ref_model$th_y
-         problem <- choose_model(case_data, input$refsamp)
+         problem <- choose_model(case_vec, input$refsamp)
     }
    
     # print(length(th_y))  # FOR DEBUG
     # print(th_y)  # FOR DEBUG
     
+    # initialize variable names and reorder multivariate response vector
     if(length(ref_model) != 2) {
       var_names <- problem$var_names
-      case_data <- reorder_df(case_data, var_names)
+      case_vec <- reorder_df(case_vec, var_names)
+    } else {
+         var_names <- names(case_data())
     }
     
-    # print(case_data) # FOR DEBUG
+    # apply category specifications to case_vec for reference model
+    for (i in 1:length(var_names)) {
+         cur_var <- var_names[i]
+         var_idx <- which(var_info()["Variable"] == cur_var)
+         if (var_info()[var_idx, "Type"] == "ordinal") {
+              cat_spec <- var_info()[var_idx, "Categories"]
+              case_vec[[i]] <- apply_cat_spec(case_vec[[i]], cat_spec)
+         } else {
+              next
+         }
+         
+    }
     
-    vv <- as.numeric(case_data[1,]) # case_data assigned to vv as a vector
+    # print(case_vec) # FOR DEBUG
+    
+    vv <- as.numeric(case_vec[1,]) # case_vec assigned to vv as a vector
     
     fv <- suppressWarnings(yada::calc_x_posterior(vv, th_x, th_y, mod_spec, xcalc))
 
@@ -231,10 +246,16 @@ shinyServer(function(input, output, session){
     #stopCluster(cl)
     
     output$case <- renderTable({
-      test_in <- is.null(names(case_data))
+      test_in <- is.null(names(case_data()))
       if (test_in) data.frame(Variable = NA, Value = NA) else
-        data.frame(Variable=names(case_data), Value=unname(unlist(case_data[1,])))
-      #data.frame(Variable = names(case_data()), Value = unname(unlist(case_data()[1,])))
+        # data.frame(Variable=names(case_data), Value=unname(unlist(case_data[1,])))
+          data.frame(Variable = names(case_data()), Value = unname(unlist(case_data()[1,])))
+    })
+    
+    output$model_vars <- renderText({
+         invisible(
+              paste0(var_names,collapse=", ")
+         )
     })
     
     return(result)
@@ -264,7 +285,7 @@ shinyServer(function(input, output, session){
   })
   
   output$report_version <- renderText({
-    paste("KidStats Version:", ks_version())
+    paste("kidstats Version:", ks_version())
   })
   
   output$modsamp <- renderTable({
@@ -293,6 +314,7 @@ shinyServer(function(input, output, session){
 
   })
   
+  
   ########## Report Generation ##########
   # report download handler
   output$downloadReport <- downloadHandler(
@@ -308,7 +330,7 @@ shinyServer(function(input, output, session){
       # owd <- setwd(tempdir())
       # on.exit(setwd(owd))
       file.copy(src, 'ks_report.Rmd', overwrite = TRUE)
-      
+
       out <- rmarkdown::render('ks_report.Rmd', rmarkdown::word_document()
       )
       file.rename(out, file)

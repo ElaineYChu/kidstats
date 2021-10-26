@@ -3,6 +3,7 @@
 library(shiny, quietly = TRUE)
 library(shinydashboard, quietly = TRUE)
 library(shinyjs, quietly = TRUE)
+library(markdown, quietly = TRUE)
 library(yada, quietly = TRUE)
 
 source("R/helpers.R")
@@ -92,8 +93,11 @@ body <- dashboardBody(
             shinyjs::hidden(plotOutput("post_plot")),
             br(),
             wellPanel(
-              h5("Model Options"),
-              tableOutput("modsamp")
+              h5("Model Info"),
+              tableOutput("modsamp"),
+              br(),
+              "Trained using the following variables: ",
+              textOutput("model_vars")
             ),
             wellPanel(
               h5("Case Data"),
@@ -103,7 +107,7 @@ body <- dashboardBody(
     ),
     # Info tab
     tabItem("aboutTab",
-            includeMarkdown("www/md/KidStats-About.Rmd")
+            includeMarkdown("www/md/kidstats-About.Rmd")
     )
   )
 )

@@ -2,7 +2,7 @@
 
 ## This function is the displayed version in the UI ##
 ks_version <- function(){
-  return("0.2.0")
+  return("0.2.2")
 }
 
 ## Checks that not all of the entries are NA ##

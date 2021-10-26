@@ -1,0 +1,11 @@
+name: kidstats
+title: kidstats
+username:
+account: kyra-stull
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 754761
+bundleId: 5179724
+url: https://kyra-stull.shinyapps.io/kidstats/
+when: 1635273471.98953
+lastSyncTime: 1635273471.98953

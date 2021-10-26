@@ -22,7 +22,7 @@ https://kyra-stull.shinyapps.io/kidstats/
 
 
 Citing KidStats:
-Kyra Stull (2021). kidstats: A web app to employ statistical analyses for subadults. R package version 0.2.0. DOI: TBD
+Kyra E. Stull, Elaine Y. Chu (2021). kidstats: a GUI to estimate components of the subadult biological profile. R package version 0.2.2. [DOI found on https://zenodo.org/communities/svad]
 
 
 ## Model Options

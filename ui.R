@@ -107,12 +107,12 @@ body <- dashboardBody(
     ),
     # Info tab
     tabItem("aboutTab",
-            includeMarkdown("www/md/kidstats-About.Rmd")
+            includeMarkdown("www/md/KidStats-About.Rmd")
     )
   )
 )
 
 # BUILD DASHBOARD
 shinyUI(
-  dashboardPage(header, sidebar, body, skin = "purple", title = "Kidstats")
+  dashboardPage(header, sidebar, body, skin = "purple", title = "kidstats")
 )

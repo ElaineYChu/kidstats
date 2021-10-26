@@ -241,7 +241,7 @@ shinyServer(function(input, output, session){
 
     post <- yada::analyze_x_posterior(fv$x, fv$density, input$xknown)
     
-    result <- list(input=vv, post=post)
+    result <- list(input=vv, post=post, model_var=var_names)
     
     #stopCluster(cl)
     

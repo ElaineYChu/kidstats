@@ -188,7 +188,7 @@ shinyServer(function(input, output, session){
     
     ## Most of this code to run the model was provided by Michael & Elaine ##
     case_vec <- case_data()  # convert reactive value to response vector
-    #print(case_vec) # FOR DEBUG
+    # print(case_vec) # FOR DEBUG
 
     #cl <- makeCluster(detectCores())
     #registerDoParallel(cl)
@@ -206,9 +206,10 @@ shinyServer(function(input, output, session){
          problem <- ref_model$problem
     } else {
          th_y <- ref_model$th_y
-         problem <- choose_model(case_vec, input$refsamp)
+         problem <- load_problem("US")
     }
-   
+    
+    # print(names(problem))  # FOR DEBUG
     # print(length(th_y))  # FOR DEBUG
     # print(th_y)  # FOR DEBUG
     
@@ -217,7 +218,7 @@ shinyServer(function(input, output, session){
       var_names <- problem$var_names
       case_vec <- reorder_df(case_vec, var_names)
     } else {
-         var_names <- names(case_data())
+         var_names <- names(case_vec)
     }
     
     # apply category specifications to case_vec for reference model
@@ -237,9 +238,9 @@ shinyServer(function(input, output, session){
     
     vv <- as.numeric(case_vec[1,]) # case_vec assigned to vv as a vector
     
-    fv <- suppressWarnings(yada::calc_x_posterior(vv, th_x, th_y, mod_spec, xcalc))
+    fv <- suppressWarnings(calc_x_posterior(vv, th_x, th_y, mod_spec, xcalc))
 
-    post <- yada::analyze_x_posterior(fv$x, fv$density, input$xknown)
+    post <- analyze_x_posterior(fv$x, fv$density, input$xknown)
     
     result <- list(input=vv, post=post, model_var=var_names)
     

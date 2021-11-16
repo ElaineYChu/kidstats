@@ -28,14 +28,13 @@ TPE_EF,ordinal,0 1 12 2 23 3 4,-1,end,_L,_R,highest
 TDE_EF,ordinal,0 1 12 2 23 3 4,-1,end,_L,_R,highest
 FBPE_EF,ordinal,0 1 12 2 23 3 4,-1,end,_L,_R,highest
 FBDE_EF,ordinal,0 1 12 2 23 3 4,-1,end,_L,_R,highest
+HH_Oss,ordinal,0 1 12 2 23 3 4,-1,end,_L,_R,highest
 HGT_Oss,ordinal,0 1,-1,end,_L,_R,highest
 HLT_Oss,ordinal,0 1,-1,end,_L,_R,highest
 HPE_EF,ordinal,0 1 12 2 23 3 4,-1,end,_L,_R,highest
 HC_Oss,ordinal,0 1,-1,end,_L,_R,highest
 HT_Oss,ordinal,0 1,-1,end,_L,_R,highest
 HLE_Oss,ordinal,0 1,-1,end,_L,_R,highest
-HCE1_EF,ordinal,0 1,-1,end,_L,_R,highest
-HCE2_EF,ordinal,0 1,-1,end,_L,_R,highest
 HDE_EF,ordinal,0 1 12 2 23 3 4,-1,end,_L,_R,highest
 HME_EF,ordinal,0 1 12 2 23 3 4,-1,end,_L,_R,highest
 RPE_EF,ordinal,0 1 12 2 23 3 4,-1,end,_L,_R,highest

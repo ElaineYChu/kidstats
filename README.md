@@ -9,7 +9,7 @@ KidStats is a Shiny application to make subadult age estimations based on dental
 This application is one product of the research of Kyra Stull, PhD (http://www.kyrastull.weebly.com), an Assistant Professor in the Department of Anthropology at the University of Nevada, Reno. Associated citations / articles are linked at the bottom of this document. 
 
 Please cite this application as: 
-> K.E. Stull (2021). kidstats: Age Estimation. R package version 0.2.0. DOI: 10.5281/zenodo.5250072	
+> Stull, Kyra E., & Chu, Elaine Y. (2021). KidStats: a GUI to estimate components of the subadult biological profile (v0.2.2). Zenodo. https://doi.org/10.5281/zenodo.5601936	
 
 ## Installation
 

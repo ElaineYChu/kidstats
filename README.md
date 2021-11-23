@@ -25,7 +25,22 @@ git clone https://github.com/ElaineYChu/kidstats
 
 ## Usage
 
-Once the repository is cloned onto your local machine, open up RStudio. KidStats requires R version **3.2.1** or higher and will require the following packages in your local R system:
+**TO RUN KIDSTATS IN RSTUDIO: ** 
+1. Locate the "kidstats" folder in your system and the file called "ui.R".
+2. Open the file with RStudio.
+3. Locate and press the "Run App" button at the top-right corner of the "ui.R" script.
+
+**TO RUN KIDSTATS IN BASE R: **
+1. Set the working directory
+``` r
+setwd("file/path/to/kidstats")  # set working directory
+```
+2. Run the application
+``` r
+shiny::runApp()  # run KidStats
+```
+
+KidStats requires R version **3.2.1** or higher and will require the following packages in your local R system:
 * shiny
 * shinydashboard
 * shinyjs
@@ -35,20 +50,7 @@ Once the repository is cloned onto your local machine, open up RStudio. KidStats
 * doParallel
 * yada
 
-If you do not have one/some/all of the above packages in your local system, please set your working directory to the cloned repository and run the following code in your R console:
-
-```r
-setwd("file/path/to/desired/repository/location/kidstats")  # set working directory to kidstats or kidstats-main, depending on your folder name
-source("setup.R")  # install required packages
-```
-
-After setting your working directory and ensuring all packages are installed, run the following code to access KidStats:
-
-``` r
-runApp()  # run KidStats
-
-```
-
+If you do not have one/any/all of these packages, KidStats will automatically install them for you, prior to running the application. This may require additional inputs from the user, such as pressing the [ENTER] button to allow packages to install.
 
 
 

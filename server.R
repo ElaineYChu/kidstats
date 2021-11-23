@@ -1,5 +1,11 @@
-# kidstats2 server.R
+####################################
+##
+##           Server for 
+##            KidStats
+##
+####################################
 
+## Load Libraries
 library(shiny, quietly = TRUE)
 library(shinydashboard, quietly = TRUE)
 library(dplyr, quietly = TRUE)
@@ -8,6 +14,7 @@ library(yada, quietly = TRUE)
 library(stringr, quietly = TRUE)
 library(doParallel, quietly = TRUE)
 
+## Load additional unique functions and design elements
 source("R/helpers.R")
 source("R/model.R")
 

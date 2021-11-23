@@ -1,20 +1,25 @@
-# kidstats2 ui.R
+####################################
+##
+##       User Interface for 
+##            KidStats
+##
+####################################
 
+source("R/setup.R", local=TRUE)  # install packages if not in local system
+
+## Load Libraries
 library(shiny, quietly = TRUE)
 library(shinydashboard, quietly = TRUE)
 library(shinyjs, quietly = TRUE)
 library(markdown, quietly = TRUE)
 library(yada, quietly = TRUE)
 
+## Load additional unique functions and design elements
 source("R/helpers.R")
 source("R/panel_records.R", local = TRUE)
 source("R/panel_longbone.R", local = TRUE)
 source("R/panel_dentition.R", local = TRUE)
 source("R/panel_fusion.R", local = TRUE)
-
-# # Load Data  # depreciated step
-# us_data <- read.csv('www/csv/US.csv')
-
 
 
 # HEADER

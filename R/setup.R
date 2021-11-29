@@ -9,7 +9,7 @@
 required_packages <- c("shiny","shinydashboard",
                        "shinyjs","tidyverse",
                        "rmarkdown","stringr",
-                       "devtools","yada")
+                       "devtools","yada","DT")
 
 ## Loop through required packages and 
 ## install those that are not in the local system
